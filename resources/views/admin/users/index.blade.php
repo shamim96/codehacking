@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+@if(Session::has('delete_user'))
 
+    <p class="bg-danger">   {{session('delete_user')}} </p>
+
+@endif
     <h1>Users</h1>
 
     <table class="table">
@@ -24,7 +28,7 @@
 <td>{{$user->id}}</td>
 <td><a href="{{route('users.edit',$user->id)}}"> {{$user->name}} </a></td>
 <td>
-    <img width="70px" src="{{$user->photo?$user->photo->path:"no photo"}}" />
+    <img width="70px" src="{{$user->photo?$user->photo->path:"http://via.placeholder.com/400x400"}}" />
 </td>
 <td>{{$user->email}}</td>
               <td>{{$user->role->name}} </td>
